@@ -7,23 +7,16 @@ runs:
       run: |
         echo "
         **Change log** :point_down:
-        [Revanced](https://github.com/revanced/revanced-patches/releases)
-        [Revanced Extended](https://github.com/inotia00/revanced-patches/releases)
-        [Revanced Extended anddea](https://github.com/anddea/revanced-patches/releases)
-        [Revanced Extended for Android 6 & 7](https://github.com/kitadai31/revanced-patches-android6-7/releases)
-        [Revanced Extended for Android 5](https://github.com/d4n3436/revanced-patches-android5/releases)
-        " > ${{ github.workspace }}/CHANGELOG.txt
-
-    - name: Get Current Date for Versioning
-      id: date
-      run: echo "date=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_ENV
-
-    - name: Create Release
+        [Instagram Beta](https://github.com/meta/instagram-beta/releases)
+        [ReVanced YouTube Beta](https://github.com/revanced/revanced-patches/releases)
+        [ReVanced YouTube Music Beta](https://github.com/revanced/revanced-patches/releases)
+        "> ${{ github.workspace }}/CHANGELOG.txt
+    - name: Release
       uses: ncipollo/release-action@v1.14.0
       with:
         artifacts: |
           ./release/*.apk
-        name: Revanced & Revanced Extended
-        tag: "release-${{ env.date }}" # Generates a unique tag based on the timestamp
+        name: Beta APK Releases
+        tag: new
         bodyFile: ${{ github.workspace }}/CHANGELOG.txt
-        allowUpdates: false # Ensures a new release is always created
+        allowUpdates: false
